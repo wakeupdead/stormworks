@@ -19,15 +19,7 @@ sdt=screen.drawText
 sdtb=screen.drawTextBox
 ssc=screen.setColor
 
-function hex2rgb(hex)
-    hex = hex:gsub("#","")
-        return {r=tonumber("0x"..hex:sub(1,2)), g=tonumber("0x"..hex:sub(3,4)), b=tonumber("0x"..hex:sub(5,6))}
-end
-
 speed = 0
-barsColor=hex2rgb("#000000")
-headColor=hex2rgb("#111111")
-transparency=200
 heightOffset=2
 shHeading=true
 	
@@ -40,7 +32,7 @@ function onDraw()
 	w=gw()
 	h=gh()
 	
-	ssc(180, 180, 180)
+	ssc(100, 100, 100)
 	dc()					
 	
 	sp=hdg-math.floor(hdg/5)*5
@@ -81,12 +73,12 @@ function onDraw()
 		x=x+5 v=(v+5)%360
 	end
 	if shHeading == true then
-		ssc(20,20,20)
+		ssc(10,10,10)
 		sdl(w/2, heightOffset, w/2, 2+heightOffset)
 		sdt((w-#(string.format("%.0f", hdg))*5)/2+1, PL+heightOffset, string.format("%.0f", hdg))
 	end
 	
-	ssc(20, 20, 20)
+	ssc(10, 10, 10)
 	sdtb(2, 14, 60, 7, "SPEED", -1, 0)
 	sdtb(2, 14, 60, 7, string.format("%02.1f", speed), 1, 0)
 	if speed > 0 then
