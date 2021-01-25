@@ -18,6 +18,7 @@ sdrf=screen.drawRectF
 sdt=screen.drawText
 sdtb=screen.drawTextBox
 ssc=screen.setColor
+sf=string.format
 
 speed = 0
 heightOffset=2
@@ -32,7 +33,7 @@ function onDraw()
 	w=gw()
 	h=gh()
 	
-	ssc(100, 100, 100)
+	ssc(60,60,60)
 	dc()					
 	
 	sp=hdg-math.floor(hdg/5)*5
@@ -44,7 +45,7 @@ function onDraw()
     P1 = 0
     P2 = 1
 	
-	ssc(0,0,0,200)
+	ssc(0,0,0,230)
 	while (x<w) do
 		if (v/15==math.floor(v/15)) then
 			sdl(x, heightOffset, x, 2+heightOffset)
@@ -73,12 +74,12 @@ function onDraw()
 		x=x+5 v=(v+5)%360
 	end
 	if shHeading == true then
-		ssc(10,10,10)
+		ssc(0,0,0,220)
 		sdl(w/2, heightOffset, w/2, 2+heightOffset)
 		sdt((w-#(string.format("%.0f", hdg))*5)/2+1, PL+heightOffset, string.format("%.0f", hdg))
 	end
 	
-	ssc(10, 10, 10)
+	ssc(0,0,0,220)
 	sdtb(2, 14, 60, 7, "SPEED", -1, 0)
 	sdtb(2, 14, 60, 7, string.format("%02.1f", speed), 1, 0)
 	if speed > 0 then
