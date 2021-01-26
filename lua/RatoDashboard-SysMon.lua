@@ -22,14 +22,21 @@ sf=string.format
 
 prevBat = 1
 isDraining = true
+delay = 50
+count = 0
 
 function onTick()
     bat = iN(5)
-    if (prevBat > bat) then
-        isDraining = true
-    else
-        isDraining = false
+    count = count + 1
+	if count >= delay then
+        count = 0
+        if (prevBat > bat) then
+            isDraining = true
+        else
+            isDraining = false
+        end
     end
+    
 	gen = iN(6) + iN(7) + iN(8) + iN(9)
 	fuelL = iN(1)
     fuelR = iN(2)

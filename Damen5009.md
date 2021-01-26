@@ -1,16 +1,17 @@
 
 BUGS:
-- Weather display not working
+- Fixed - Weather display not working 
 - Gears not switching - fixed, direct connect to seat
 - Add fuel consumption
-- Depth display - "A" button background
+- Fixed - Depth display - "A" button background
 - Heli electrical charging plug
-- Add seat to sofa in quarters
-- Dials on engines not working
+- Fixed - Add seat to sofa in quarters
+- Fixed - Dials on engines not working
 - Add stabilization system
 - Magnet buttons on anchors for the Zodiac
 - Bat drain arrow always down
 - Gen shutting down and starting again - seems like water flowing in air intake during stormy weather
+- Fixed - Rework storage area on deck center
 
 
 I'm proudly presenting new Damen 5009 SAR vessel developed using official Damen blueprints and scaled 1:1.
