@@ -32,18 +32,20 @@ function onTick()
     end
 	gen = iN(6) + iN(7) + iN(8) + iN(9)
 	fuelL = iN(1)
-	fuelR = iN(2)
+    fuelR = iN(2)
+    cFuelL = iN(3)
+	cFuelR = iN(4)
 end
 
 function onDraw()
 	w = gw()				  
 	h = gh()
-	ssc(60,60,60)
+	ssc(0,0,0)
 	dc()
-						
-    ssc(0,0,0,230)
+                
+    ssc(0,120,0)
     sdtb(3,3,60,7,"Bat", -1,0)
-    sdtb(3,3,60,7,sf("%02.2f",bat), 1,0)
+    sdtb(3,3,60,7,sf("%.0f%%",bat*100), 1,0)
 	if isDraining then
         sdtf(36, 3, 42, 3, 39, 10)
     else
@@ -53,10 +55,12 @@ function onDraw()
 	sdtb(3,10,60,7,"Gen", -1,0)
     sdtb(3,10,60,7,sf("%02.1f",gen), 1,0)
 
-	sdtb(3,20,60,7,"Fuel L", -1,0)
-    sdtb(3,30,60,7,sf("%.0f",fuelL), 1,0)
+    sdtb(3,20,60,7,"Fuel L", -1,0)
+    sdtb(3,20,60,7,sf("%.0f%%",fuelL*100/cFuelL), 1,0)
+    sdtb(3,30,60,7,sf("%.0f L",fuelL), 1,0)
 	
-	sdtb(3,40,60,7,"Fuel R", -1,0)
-    sdtb(3,50,60,7,sf("%.0f",fuelR), 1,0)
+    sdtb(3,40,60,7,"Fuel R", -1,0)
+    sdtb(3,40,60,7,sf("%.0f%%",fuelR*100/cFuelR), 1,0)
+    sdtb(3,50,60,7,sf("%.0f L",fuelR), 1,0)
     
 end

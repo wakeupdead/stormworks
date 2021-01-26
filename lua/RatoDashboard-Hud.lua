@@ -33,7 +33,7 @@ function onDraw()
 	w=gw()
 	h=gh()
 	
-	ssc(60,60,60)
+	ssc(0,0,0)
 	dc()					
 	
 	sp=hdg-math.floor(hdg/5)*5
@@ -45,7 +45,7 @@ function onDraw()
     P1 = 0
     P2 = 1
 	
-	ssc(0,0,0,230)
+	ssc(0,120,0)
 	while (x<w) do
 		if (v/15==math.floor(v/15)) then
 			sdl(x, heightOffset, x, 2+heightOffset)
@@ -74,19 +74,22 @@ function onDraw()
 		x=x+5 v=(v+5)%360
 	end
 	if shHeading == true then
-		ssc(0,0,0,220)
+		ssc(0,120,0)
 		sdl(w/2, heightOffset, w/2, 2+heightOffset)
 		sdt((w-#(string.format("%.0f", hdg))*5)/2+1, PL+heightOffset, string.format("%.0f", hdg))
 	end
 	
-	ssc(0,0,0,220)
-	sdtb(2, 14, 60, 7, "SPEED", -1, 0)
-	sdtb(2, 14, 60, 7, string.format("%02.1f", speed), 1, 0)
+	-- ssc(5,5,5)
+	-- sdrf(3, 13, 58, 9)
+	ssc(0,120,0)
+	sdtb(4, 14, 56, 7, "SPEED", -1, 0)
+	sdtb(4, 14, 56, 7, string.format("%02.1f", ab(speed)), 1, 0)
+	ssc(0,80,0)
 	if speed > 0 then
-		sdtf(36, 21, 42, 21, 39, 14)
+		sdtf(31, 21, 37, 21, 34, 14)
 	end
 	if speed < 0 then
-		sdtf(36, 14, 42, 14, 39, 21)
+		sdtf(31, 14, 37, 14, 34, 21)
 	end
     
     -- Fuel consumption

@@ -1,0 +1,10 @@
+42,46,33
+
+5,5,5
+
+screen.setMapColorOcean(BR, BG, BB)
+	screen.setMapColorShallows(BR-5, BG-5, BB-5)
+	screen.setMapColorLand(BR-10, BG-10, BB-10)
+	screen.setMapColorGrass(BR-15, BG-15, BB-15)
+	screen.setMapColorSand(BR-20, BG-20, BB-20)
+	screen.setMapColorSnow(BR-25, BG-25, BB-25)

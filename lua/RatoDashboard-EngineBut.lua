@@ -69,12 +69,12 @@ function onTick()
 		end
     end
     
-	if isPressed and inStartBox() then
+	if isPressed and inButtonBox() and statusL == 0 and statusR == 0 then
 		oB(3, true)
         statusL = 2
         statusR = 2
 	end
-	if isPressed and inStopBox() then
+	if isPressed and inButtonBox() and statusL == 3 and statusR == 3 then
 		oB(3, false)
         statusL = 1
         statusR = 1
@@ -82,76 +82,107 @@ function onTick()
 end
 
 function onDraw()
-	w = screen.getWidth()				  
-	h = screen.getHeight()
-	screen.setColor(10, 10, 10)
-	screen.drawClear()
-						
-	screen.setColor(0, 255, 0)
-	--dStatus()
-	dStop()
-	dStart()	
+	
+	w = gw()				  
+	h = gh()
+	h2 = h/2
+	w2 = w/2
+	
+	ssc(0, 180, 0)
+	if statusL == 0 and statusR == 0 then
+		ssc(5, 5, 5)
+	end
+	sdrf(3, h - 9 , w-6, 9)
+	ssc(0, 0, 0)
+	sdtb(3, h - 9 , w-6, 9, "ENGINE ON", 0, 0)
+
+	if statusL == 1 and statusR == 1 then
+		ssc(0,0,0)
+		sdrf(0, h - 9 , w, 9)
+		ssc(5,5,5)
+		sdtb(0, h - 9 , w, 9, "STOPPING", 0, 0)
+	end
+	if statusL == 2 and statusR == 2 then
+		ssc(0,0,0)
+		sdrf(0, h - 9 , w, 9)
+		ssc(5,5,5)
+		sdtb(0, h - 9 , w, 9, "STARTING", 0, 0)
+	end
+	
+	-- dStop()
+	-- dStart()	
 	--dWarn()
+	-- dStatus()
+end
+
+function inButtonBox()
+	if inputX > 0 and inputY > h-9 and inputX < (w) and inputY < h then
+		return true 
+	end
 end
 
 -- function dStatus()
--- 	screen.setColor(255, 255, 255)
--- 	screen.drawText(2,19, 'STATUS:')
--- 	if status == 0 then
--- 	screen.setColor(255, 0, 0)
--- 	screen.drawText(2,25, 'STOPPED')
--- 	end
+-- 	-- if status == 0 then
+-- 	-- ssc(255, 0, 0)
+-- 	-- sdt(2,25, 'STOPPED')
+-- 	-- end
 -- 	if status == 1 then
--- 	screen.setColor(255, 255, 0)
--- 	screen.drawText(2,25, 'STOPPING')
+-- 		ssc(,5,5)
+-- 		sdrf(0, h - 9 , w, 9)
+-- 		ssc(0, 0, 0)
+-- 		sdtb(0, h - 9 , w, 9, "STOPPING", 0, 0)
 -- 	end
 -- 	if status == 2 then
--- 	screen.setColor(0, 255, 255)
--- 	screen.drawText(2,25, 'STARTING')
+-- 		ssc(5,5,5)
+-- 		sdrf(0, h - 9 , w, 9)
+-- 		ssc(0, 0, 0)
+-- 		sdtb(0, h - 9 , w, 9, "STARTING", 0, 0)
 -- 	end
--- 	if status == 3 then
--- 	screen.setColor(0, 255, 0)
--- 	screen.drawText(2,25, 'RUNNING')
--- 	end
+-- 	-- if status == 3 then
+-- 	-- ssc(0, 255, 0)
+-- 	-- sdt(2,25, 'RUNNING')
+-- 	-- end
 -- end
 
--- function dWarn()
--- 	screen.setColor (255,0,0)
--- 	if overTemp then
--- 	screen.drawText(2, 37, 'OVERHEAT')
--- 	alarm = true
+-- -- function dWarn()
+-- -- 	ssc (255,0,0)
+-- -- 	if overTemp then
+-- -- 	sdt(2, 37, 'OVERHEAT')
+-- -- 	alarm = true
+-- -- 	end
+-- -- 	if overSpeed then
+-- -- 	sdt(2, 43, 'OVERSPEED')
+-- -- 	alarm = true
+-- -- 	end
+-- -- end
+
+-- function dStop()
+-- 	ssc(0, 180, 0)
+-- 	if statusL == 3 and statusR == 3 then
+-- 		ssc(5, 5, 5)
 -- 	end
--- 	if overSpeed then
--- 	screen.drawText(2, 43, 'OVERSPEED')
--- 	alarm = true
+-- 	sdrf(w2+1, h - 9 , w2-1, 9)
+-- 	ssc(0, 0, 0)
+-- 	sdtb(w2, h - 9 , w2-1, 9, "STOP", 0, 0)
+-- end
+-- function dStart()
+	
+-- 	ssc(0, 180, 0)
+-- 	if statusL == 0 and statusR == 0 then
+-- 		ssc(5, 5, 5)
 -- 	end
+-- 	sdrf(0, h - 9 , w2-1, 9)
+-- 	ssc(0, 0, 0)
+-- 	sdtb(0, h - 9 , w2-1, 9, "START", 0, 0)
 -- end
 
-function dStop()
-	screen.setColor(20, 20, 20)
-	if statusL == 3 and statusR == 3 then
-		screen.setColor(255, 0, 0)
-	end
-	screen.drawRectF(w/2, h - 9 , w, 7)
-	screen.setColor(255, 255, 255)
-	screen.drawText((w/2) + 5, h - 8 , 'STOP')
-end
-function dStart()
-	screen.setColor(20, 20, 20)
-	if statusL == 0 and statusR == 0 then
-		screen.setColor(0, 255, 0)
-	end
-	screen.drawRectF(0, h - 9 , w / 2, 7)
-	screen.setColor(255, 255, 255)
-	screen.drawText( 5 , h - 8 , 'START')
-end
-function inStartBox()
-	if inputX > 0 and inputY > h-9 and inputX < (w/2) and inputY < h then
-	return true 
-	end
-end
-function inStopBox()
-	if inputX > (w/2) and inputY > h-9 and inputX < w and inputY < h then
-	return true 
-	end
-end
+-- function inStartBox()
+-- 	if inputX > 0 and inputY > h-9 and inputX < (w/2) and inputY < h then
+-- 	return true 
+-- 	end
+-- end
+-- function inStopBox()
+-- 	if inputX > (w/2) and inputY > h-9 and inputX < w and inputY < h then
+-- 	return true 
+-- 	end
+-- end
