@@ -1,5 +1,5 @@
 --
--- Num: 1- Fuel R, 2 - Fuel R, 3 - cap fuel L, 4 - cap fuel R, 5- battery, 6- gen L1, 7-gen L2, 8 - gen R1, 9 - gen R2, 10 - speed, 11 - gps x, 12 - gps y, 13 - compass
+-- Num: 1- Fuel R, 2 - Fuel R, 3 - cap fuel L, 4 - cap fuel R, 5- battery, 6- gen L1, 7-gen L2, 8 - gen R1, 9 - gen R2, 10 - speed, 11 - gps x, 12 - gps y, 13 - compass, 14 -time, 15 - timer
 -- Bool: 
 
 iN=input.getNumber
@@ -23,10 +23,43 @@ sf=string.format
 speed = 0
 heightOffset=2
 shHeading=true
+fuelPrev=0
+timePrev=0
+i=0
+interval=300
+remDist=0
+remTime=0
+consumption=0
+consumptionDist=0
 	
 function onTick()
 	hdg=(((1-iN(13))%1)*360)
 	speed = iN(10)*1.94384
+	speedMs = iN(10)
+
+	i=i+1
+	if (i > interval) then
+		i=0
+
+		fuel=iN(1)+iN(2)
+		time=iN(15)
+
+		consumption=(fuelPrev-fuel)/(time-timePrev) -- L per sec
+		consumptionDist=(consumption*1000)/speedMs -- L per km
+		remTime=fuel/(consumption*60) -- minutes
+		remDist=speedMs*remTime*60/1000 -- km
+
+		if (speed < 2) then
+			remTime = 0
+			remDist = 0
+			consumptionDist = 0
+		end
+
+		fuelPrev = fuel
+		xPrev = x
+		yPrev = y
+		timePrev = time
+	end
 end
 
 function onDraw()
@@ -76,14 +109,14 @@ function onDraw()
 	if shHeading == true then
 		ssc(0,120,0)
 		sdl(w/2, heightOffset, w/2, 2+heightOffset)
-		sdt((w-#(string.format("%.0f", hdg))*5)/2+1, PL+heightOffset, string.format("%.0f", hdg))
+		sdt((w-#(sf("%.0f", hdg))*5)/2+1, PL+heightOffset, sf("%.0f", hdg))
 	end
 	
 	-- ssc(5,5,5)
 	-- sdrf(3, 13, 58, 9)
 	ssc(0,120,0)
 	sdtb(4, 14, 56, 7, "SPEED", -1, 0)
-	sdtb(4, 14, 56, 7, string.format("%02.1f", ab(speed)), 1, 0)
+	sdtb(4, 14, 56, 7, sf("%02.1f", ab(speed)), 1, 0)
 	ssc(0,80,0)
 	if speed > 0 then
 		sdtf(31, 21, 37, 21, 34, 14)
@@ -93,8 +126,16 @@ function onDraw()
 	end
     
     -- Fuel consumption
-	
+	ssc(0,120,0)
+	sdtb(4, 30, 56, 7, "RMD", -1, 0)
+	sdtb(4, 30, 56, 7, sf("%.0f km", remDist), 1, 0)
+	sdtb(4, 38, 56, 7, "RMT", -1, 0)
+	sdtb(4, 38, 56, 7, sf("%.0f min", remTime), 1, 0)
+	sdtb(4, 46, 56, 7, "C", -1, 0)
+	sdtb(4, 46, 56, 7, sf("%.0f L/km", consumptionDist), 1, 0)
 end
 	
-
+function distance( x1, y1, x2, y2 )
+	return math.sqrt( (x2-x1)^2 + (y2-y1)^2 )
+end
 
