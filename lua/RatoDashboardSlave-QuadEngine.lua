@@ -24,27 +24,42 @@ outThr = 0
 cltch = 0
 isRev = false
 mStPrev=false
+i=0
+interval=120
+starting=false
+pumps=false
 
 function onTick()
 
 	mSt = iB(3)
 	if (mStPrev ~= mSt) then
 		if (mSt) then
-			oB(2, true)
+			starting=true
+			i=0
+			pumps=true
+		else
+			pump=false
+			outThr = 0
+		end	 
+	end
+	mStPrev=mSt
+	
+	if (starting) then
+		if (i<interval) then
 			oB(10, true)
 			oB(11, true)
 			oB(12, true)
 			oB(13, true)
 		else
-			oB(2, false)
 			oB(10, false)
 			oB(11, false)
 			oB(12, false)
 			oB(13, false)
-		end	 
+			starting=false
+		end
+		i=i+1
 	end
-	mStPrev=mSt
-	
+
 	thrZl=iN(1)
 	thr = (iN(2) - thrZl) / (1 - thrZl)
 	idle = pN("Idle throttle")
@@ -53,20 +68,23 @@ function onTick()
 	rps = (iN(14) + iN(15) + iN(16) +iN(17))/num
 	rpsT = pN("RPS clutch threshold")
 
-	if (ab(thr) > idle) then
-		cltch = 0.5
-		if (ab(rps)>rpsT) then
-			cltch = 1
+	if (mSt) then	
+
+		if (ab(thr) > idle) then
+			cltch = 0.5
+			if (ab(rps)>rpsT) then
+				cltch = 1
+			end
+			outThr = thr
+		else
+			cltch = 0
+			outThr = idle
 		end
-		outThr = thr
-	else
-		cltch = 0
-		outThr = 0
-	end
-	if thr < 0 then
-		isRev = true
-	else
-		isRev = false
+		if thr < 0 then
+			isRev = true
+		else
+			isRev = false
+		end
 	end
 	
 	
@@ -76,6 +94,7 @@ function onTick()
 	oN(5, temp)
 	oN(6, rps)
 	oN(7, num)
+	oB(2, pumps)
 
 	oN(10, iN(10))
 	oN(11, iN(11))

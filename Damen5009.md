@@ -12,7 +12,7 @@ BUGS:
 - Bat drain arrow always down
 - Gen shutting down and starting again - seems like water flowing in air intake during stormy weather
 - Fixed - Rework storage area on deck center
-- When I start the engine the starter keeps running and does not stop. Makes it very loud.
+- Fixed - When I start the engine the starter keeps running and does not stop. Makes it very loud.
 
 
 I'm proudly presenting new Damen 5009 SAR vessel developed using official Damen blueprints and scaled 1:1.
