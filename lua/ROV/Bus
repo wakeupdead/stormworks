@@ -1,0 +1,87 @@
+-- Seat
+Bool:
+1 - Drone-arm mode switch
+2 - 
+3 - 
+4 - 
+5 -
+6 -
+31 - Trigger
+32 - Occupied
+Number:
+1 - a/d - Turn horiz / Left arm
+2 - w/s - Fwd throttle / Left arm up-down
+3 - left/right - Side throttle
+4 - up/down 
+
+
+--Number
+
+--1 - Desired fwd throttle
+--2 - Desired rotation
+--3 - Desired alt
+--4 - Desired heading
+--5 - Side throttle
+--6 - Camera rotate
+--7 - Camera zoom
+--8 - Camera channel
+--9 - Laser distance
+--10 - Power level
+--11 - Left Arm Lift
+--12 - Left Arm Shoulder
+--13 - Left Arm Elbow
+--14 - Right Arm Lift
+--15 - Right Arm Shoulder
+--16 - Right Arm Elbow
+--17 - 
+--18 - Distance to bottom
+--19 - Drone vertical speed
+--20 - Drone speed
+--21 - Drone side speed
+--22 - Rotation vertical
+--23 - Rotation horizontal
+--24 - Tilt front
+--25 - tilt right
+--26 - Temperature
+--27 - drone compass
+--28 - station X coord
+--29 - station Y coord
+--30 - drone X coord
+--31 - drone Y coord
+--32 - drone alt
+
+
+--Bool
+
+--1 - System on
+--2 - Emergency
+--3 - Depth stabilizer
+--4 - 
+--5 - 
+--6 - Drone/Arms switch
+--7 - 
+--8 - Flood lights
+--9 - Beam lights
+--10 - 
+--11 - 
+--12 - Camera IR
+--13 - Camera Laser
+--14 - 
+--15 - Left arm mag
+--16 - Right arm mag
+--17 - Screens on/off
+--18 - 
+--19 - 
+--20 - Camera channel next
+--21 - Camera channel prev
+--22 - Camera zoom in
+--23 - Camera zoom out
+--24 - Camera rotate up
+--25 - Camera rotate down
+--26 - 
+--27 - 
+--28 - 
+--29 - 
+--30 - Lifting magnets
+--31 - Front magnet
+--32 - 
