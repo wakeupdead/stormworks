@@ -29,22 +29,28 @@ The boat is capable of doing SAR missions in various conditions.
 - Capable of hosting small SAR heli on deck (Boeing MH-1 by Xove with modified avionics and paint scheme is already there)
 - Firefighting equipment includes two cannons and self-pprotecting devices
 - Number of compartments is minimal to required only, this is reduce performance impact
+- Remote ROV capable of deep water operations
 
 ### Specs
-- Speed - up to 37 knots
+- Speed - up to 35 knots
 - Length - 53 m
 - Fuel capacity - 100 t
 
 ### Systems
-- Amazing MoBo by XLjedi with integrated sonar and radar
+- Amazing MoBo by XLjedi with integrated sonar and radar (used for ROV as well)
 - Beacon locator
 - Radio equipment
 - Standard navigation with autopilot
 - Integrated digital systems control including engine control
 - Basic stability control
+- Sea floor scanner
 
 ### Power
 Vessel is powered with two Cat engines (multiengine devices) integrated into boat digital control system. Generators independenntly powered by two medium engines.
+
+### ROV
+ROV is the modified version of my own one hosted on 2510 vessel. It operated using the cable so no worries around battery consumption. Glass cockpit allows good visibility and MoBo map with sonar delivers awsome situation awareness.
+ROV may be tricky sometimes to control however tried to make it more realistic avoiding pivot-driven rotation mechanics.
 
 ## Known flaws
 Unfortunately Stormworks stairs are single size and makes it impossible making realistic designs so I had to experiment at some points. The other missing point is flexible windows so to keep original beauty of the vessel I had to get rid of windows in the wheelhouse. Maybe this will be fixed at some point...
@@ -67,11 +73,10 @@ All credits go to authors of wonderful creations that helped me building this sh
 - Talia Kuznetsova Nav lights - https://steamcommunity.com/sharedfiles/filedetails/?id=2303437217
 - markers622 Fuel consumption - https://steamcommunity.com/sharedfiles/filedetails/?id=2096533521
 - killman88 Wood textures - https://steamcommunity.com/sharedfiles/filedetails/?id=2312988023
+- Punswikovitz LIDAR Seabed scanner - https://steamcommunity.com/sharedfiles/filedetails/?id=2573714002 
 Hope I mentioned every author however feel free to message me if not. The creation was inspired by many other authors and the community as well.
 
 ## Notes
 Please do not reupload without my permission. However feel free to make your modifications of the vessel with mentioning original creation.
-
-Creation was initially intended to host modular engines but I've decided to release this one earlier. So expecting to upgrade it further as well keep updating some other things.
 
 Ping me if any comments, suggestions and finally ENJOY!
