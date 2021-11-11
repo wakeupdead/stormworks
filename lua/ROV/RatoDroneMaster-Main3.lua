@@ -1,8 +1,27 @@
+iN=input.getNumber
+iB=input.getBool
+pN=property.getNumber
+pB=property.getBool
+oN=output.setNumber
+oB=output.setBool
+ab=math.abs
+gw=screen.getWidth				  
+gh=screen.getHeight
+dc=screen.drawClear
+sdl=screen.drawLine
+sdtf=screen.drawTriangleF
+sdrf=screen.drawRectF
+sdt=screen.drawText
+sdtb=screen.drawTextBox
+ssc=screen.setColor
+sf=string.format
+
 function onTick()
 	alt=input.getNumber(32)
 	desAlt=input.getNumber(3)
 	vSpeed=input.getNumber(19)
 	dBottom=input.getNumber(18)
+	holdD=iB(3)
 end
 
 function onDraw()
@@ -31,7 +50,7 @@ function onDraw()
 		else
 			screen.drawLine(w-offset-P1, x, w-offset-P2, x)
 		end
-		if (v==desAlt) then
+		if (v==desAlt and holdD==true) then
 			screen.setColor(0, 255, 200)
 			screen.drawTextBox(w-offset+2, x-3, PL-10, 7, string.format("%.2f", v), 1, -1) 
 			screen.drawTriangleF(w-offset+1, x, w-offset+7, x-5, w-offset+7, x+5)
